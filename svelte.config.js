@@ -1,24 +1,15 @@
-import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-vercel";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://svelte.dev/docs/kit/integrations
-  // for more information about preprocessors
   preprocess: vitePreprocess(),
 
   kit: {
-    // Configure for static site generation
     adapter: adapter({
-      pages: "build",
-      assets: "build",
-      fallback: undefined,
-      precompress: false,
-      strict: true,
+      runtime: "nodejs20.x",
     }),
-    paths: {
-      base: process.env.NODE_ENV === "production" ? "/glacier-website" : "",
-    },
+    // Remove base path for Vercel deployment
   },
 };
 

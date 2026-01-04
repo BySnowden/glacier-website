@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { fly } from "svelte/transition";
     import { cubicOut } from "svelte/easing";
 
@@ -6,7 +6,7 @@
 
     $: brightOpacity = Math.max(0, 1 - y / 500);
 
-    function viewport(element) {
+    function viewport(element: HTMLElement) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
